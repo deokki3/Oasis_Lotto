@@ -15,19 +15,21 @@ public class LottoTicketMaker {
     public LottoTicketMaker(){
         createLottoNumbers();
     }
-
+    //로또 번호 리스트
     public List<Integer> getLottoNumbers(){
         return lottoNumbers;
     }
-
+    //로또 티켓 리스트
     public List<LottoTicket> getLottoTickets() {
         return lottoTickets;
     }
-
+    
+    //한장당 가격 1000원
     public int calculateAvailableCount(int amount){
         return amount/1000;
-    }
-
+    } 
+    
+    //로또 생성 
     public LottoTicket buySingleLottoTicket(){
         List<Integer> numbers = new ArrayList<>();
 
@@ -39,9 +41,8 @@ public class LottoTicketMaker {
 
         return new LottoTicket(numbers);
     }
-
+    //장당 로또 티켓
     public void buyAvailableLottoTickets(int ticketCount){
-
         for(int i = 0; i < ticketCount; i++){
             lottoTickets.add(buySingleLottoTicket());
         }

@@ -18,7 +18,7 @@ public class Material {
     }
     public static final String LASTMESSAGE="(기준이 1이기 때문에 결과적으로 손해라는 의미임)";
 
-    public static final int ZERO = 0;
+    
     public static final int COUNT_ONE = 1;
     public static final int COUNT_THREE = 3;
     public static final int COUNT_FOUR = 4;

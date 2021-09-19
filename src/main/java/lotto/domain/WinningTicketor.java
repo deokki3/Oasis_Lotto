@@ -15,10 +15,10 @@ public class WinningTicketor {
 
     public WinningTicketor(String inputWinningNumbers){
         Arrays.stream(inputWinningNumbers.split(Material.WINNING_NUMBER_SEPERATOR)).forEach(e -> winningNumbers.add(Integer.parseInt(e)));
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FOURTH, Material.ZERO);
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_THIRD, Material.ZERO);
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_SECOND, Material.ZERO);
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FIRST, Material.ZERO);
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FOURTH, 0);
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_THIRD, 0);
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_SECOND, 0);
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FIRST, 0);
     }
 
     public List<Integer> getWinningNumbers() {
