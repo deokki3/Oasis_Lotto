@@ -10,7 +10,7 @@ import lotto.util.Material;
 public class LottoTicketMaker {
 	
     private List<Integer> lottoNumbers = new ArrayList<>();
-    private List<LottoTicket> lottoTickets = new ArrayList<>();
+    private List<LottoNumber> lottoTickets = new ArrayList<>();
 
     public LottoTicketMaker(){
         createLottoNumbers();
@@ -20,7 +20,7 @@ public class LottoTicketMaker {
         return lottoNumbers;
     }
     //로또 티켓 리스트
-    public List<LottoTicket> getLottoTickets() {
+    public List<LottoNumber> getLottoTickets() {
         return lottoTickets;
     }
     
@@ -30,7 +30,7 @@ public class LottoTicketMaker {
     } 
     
     //로또 생성 
-    public LottoTicket buySingleLottoTicket(){
+    public LottoNumber buySingleLottoTicket(){
         List<Integer> numbers = new ArrayList<>();
 
         Collections.shuffle(lottoNumbers);
@@ -39,7 +39,7 @@ public class LottoTicketMaker {
         }
         Collections.sort(numbers);
 
-        return new LottoTicket(numbers);
+        return new LottoNumber(numbers);
     }
     //장당 로또 티켓
     public void buyAvailableLottoTickets(int ticketCount){

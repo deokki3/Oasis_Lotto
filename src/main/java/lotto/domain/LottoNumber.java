@@ -5,14 +5,16 @@ import java.util.List;
 
 
 
-public class LottoTicket {
+public class LottoNumber {
     private List<Integer> numbers;
 
-    public LottoTicket(List<Integer> numbers){
+    public LottoNumber(List<Integer> numbers){
+    	
         this.numbers = numbers;
     }
 
     public List<Integer> getNumbers(){
+    	
         return numbers;
     }
 }

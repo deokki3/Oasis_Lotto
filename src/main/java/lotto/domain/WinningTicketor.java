@@ -12,7 +12,7 @@ public class WinningTicketor {
 
     private List<Integer> winningNumbers = new ArrayList<>();
     private Map<Integer, Integer> winningTicketCategoriesByPrize = new LinkedHashMap<>();
-
+    //, 구별 & 초기화
     public WinningTicketor(String inputWinningNumbers){
         Arrays.stream(inputWinningNumbers.split(Material.WINNING_NUMBER_SEPERATOR)).forEach(e -> winningNumbers.add(Integer.parseInt(e)));
         winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FOURTH, 0);
@@ -28,23 +28,23 @@ public class WinningTicketor {
     public Map<Integer, Integer> getWinningTicketCategoriesByPrize() {
         return winningTicketCategoriesByPrize;
     }
+    
+    public void findWinningTicket(List<LottoNumber> tickets){
 
-    public void findWinningTicket(List<LottoTicket> tickets){
-
-        for(LottoTicket ticket : tickets){
+        for(LottoNumber ticket : tickets){
             categorizeWinningTicketByPrize(checkWinningNumberCount(ticket));
         }
 
     }
-
-    public int checkWinningNumberCount(LottoTicket ticket){
+    //당첨개수만큼 카운트
+    public int checkWinningNumberCount(LottoNumber ticket){
         int count = 0;
         for(int number : ticket.getNumbers()){
             count = checkSameNumber(count, number);
         }
         return count;
     }
-
+    //당첨통계 부분 
     private void categorizeWinningTicketByPrize(int count){
         if(count == Material.COUNT_THREE){
             winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FOURTH, winningTicketCategoriesByPrize.get(Material.LOTTO_PRIZE_FOURTH) + Material.COUNT_ONE);
@@ -62,7 +62,7 @@ public class WinningTicketor {
             winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FIRST, winningTicketCategoriesByPrize.get(Material.LOTTO_PRIZE_FIRST) + Material.COUNT_ONE);
         }
     }
-
+    //같다면 +
     private int checkSameNumber(int count, int number){
         return winningNumbers.contains(number) ? count + Material.COUNT_ONE : count;
     }

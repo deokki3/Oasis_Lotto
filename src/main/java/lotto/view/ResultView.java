@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import lotto.domain.LottoTicket;
+import lotto.domain.LottoNumber;
 import lotto.util.Material;
 
 public class ResultView {
 
-    public void showLottoTickets(List<LottoTicket> lottoTickets) {
+    public void showLottoTickets(List<LottoNumber> lottoTickets) {
         System.out.println(lottoTickets.size() + Material.BOUGHT_LOTTO_TICKETS);
         lottoTickets.forEach(e -> System.out.println(e.getNumbers()));
         System.out.println("");
