@@ -15,21 +15,27 @@ public class WinningTicketor {
     //, 구별 & 초기화
     public WinningTicketor(String inputWinningNumbers){
         Arrays.stream(inputWinningNumbers.split(Material.WINNING_NUMBER_SEPERATOR)).forEach(e -> winningNumbers.add(Integer.parseInt(e)));
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FOURTH, 0);
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_THIRD, 0);
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_SECOND, 0);
-        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FIRST, 0);
+        if(winningNumbers.size() != Material.COUNT_SIX){
+            throw new IllegalArgumentException();
+        }
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FOURTH, Material.COUNT_ZERO);
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_THIRD, Material.COUNT_ZERO);
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_SECOND, Material.COUNT_ZERO);
+        winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FIRST, Material.COUNT_ZERO);
     }
 
     public List<Integer> getWinningNumbers() {
+    	
         return winningNumbers;
     }
 
     public Map<Integer, Integer> getWinningTicketCategoriesByPrize() {
+    	
         return winningTicketCategoriesByPrize;
     }
     
     public void findWinningTicket(List<LottoNumber> tickets){
+    	
 
         for(LottoNumber ticket : tickets){
             categorizeWinningTicketByPrize(checkWinningNumberCount(ticket));
@@ -45,8 +51,9 @@ public class WinningTicketor {
         return count;
     }
     //당첨통계 부분 
-    private void categorizeWinningTicketByPrize(int count){
+    public void categorizeWinningTicketByPrize(int count){
         if(count == Material.COUNT_THREE){
+        	
             winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FOURTH, winningTicketCategoriesByPrize.get(Material.LOTTO_PRIZE_FOURTH) + Material.COUNT_ONE);
         }
 
@@ -62,8 +69,9 @@ public class WinningTicketor {
             winningTicketCategoriesByPrize.put(Material.LOTTO_PRIZE_FIRST, winningTicketCategoriesByPrize.get(Material.LOTTO_PRIZE_FIRST) + Material.COUNT_ONE);
         }
     }
-    //같다면 +
-    private int checkSameNumber(int count, int number){
+    //같다면 + 1
+    public int checkSameNumber(int count, int number){
+    	
         return winningNumbers.contains(number) ? count + Material.COUNT_ONE : count;
     }
 
